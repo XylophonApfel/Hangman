@@ -7,7 +7,7 @@ Ziel ist es, das vollständige Wort zu erraten, bevor alle Fehlversuche verbrauc
 
 ## Usage
  
-Run `uv run hangman_main.py`
+Run `uv run main.py`
 
 ## Development
  
