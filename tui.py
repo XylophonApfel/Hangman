@@ -90,42 +90,34 @@ def hangman_zeichen(zaehler):
             print(chr(9744),chr(9744),chr(9744),chr(9744),chr(9744),chr(9744),chr(9744))
 
 
-def wort_darstellen(wort):
-    print("Errate folgendes Wort:  ")
-    laenge = len(wort)
-    print("_" * laenge)
-	
-    print("Welchen Buchstaben möchtest du?")
+def wort_darstellen(wort, Buchstabe, Speicher):
+    os.system("cls")
 
+    wort_klein = ""
+    wort_liste = []
+    Erraten = []
 
-
-os.system("cls")
-wort = "Test"
-wort_klein = ""
-wort_liste = []
-Erraten = []
-
-for i in wort:
-    Erraten.append("_")
-    wort_liste.append(i.lower())
-    wort_klein += i.lower()
-
-
-Buchstabe = str(input("\nBitte geben Sie einen Buchstaben oder ein Wort ein:  "))
-if Buchstabe == wort:
-    print("richtig")
-else:
     for i in wort:
-        if Buchstabe.lower() == i or Buchstabe.upper() == i:
-            platz = wort.index(i)
-            Erraten[platz] = Buchstabe.lower()
-            wort_liste[platz] = "-"
+        Erraten.append("_")
+        wort_liste.append(i.lower())
+        wort_klein += i.lower()
 
-        if "_" not in Erraten:
-            print("Richtig")
-                    
+    if Buchstabe == wort:
+        print("richtig")
+    else:
+        for i in wort:
+            if Buchstabe.lower() == i or Buchstabe.upper() == i:
+                platz = wort.index(i)
+                Erraten[platz] = Buchstabe.lower()
+                wort_liste[platz] = "-"
 
-for i in wort:
-    platz = wort.index(i)
-    print(Erraten[platz], end='')
+            if "_" not in Erraten:
+                print("Richtig")
+                        
+
+    for i in wort:
+        platz = wort.index(i)
+        print(Erraten[platz], end='')
+
+    return Erraten
 
