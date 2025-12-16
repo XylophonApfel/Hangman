@@ -35,7 +35,7 @@ Der Code zum Zugriff auf die Daten als txt befindet sich im **Modul** `repo_txt.
 Die Logik Schicht soll die Kommunikation zwischen Datenzugriff und Anzeige übernehmen.
 Außerdem sollen hier die Funktionen zur Verwaltung des Spieles implementiert werden.
   
-Aktuell befindet sich die Logik in der `main.py` Datei.
+Aktuell befindet sich die Logik in der `managment.py` und `main.py` Datei.
 -> wird von Marcus erstellt
  
 ### Oberfläche
@@ -49,9 +49,22 @@ Der Code zur Oberfläche befindet sich im Modul `tui.py`
 
 Folgende Funktionen werden realisiert:
 
-- „eingabe_Spieler“
-- „hangman_zeichen“
-- „wort_darstellen“
-- „wort_erzeugen“
-- „buchstaben_raten“
-- "open_file"
+#### Main:
+- Main
+
+ #### Managment:
+- menge_Spieler
+- eingabe_Spieler
+- wort_erzeugen
+- buchstaben_raten
+- spiel_gewonnen
+- spiel_verloren
+
+#### Repo_txt:
+- open_file
+
+#### Tui:
+- hangman_zeichen
+- wort_darstellen
+- hangman_zeichen
+- laenge_wort
