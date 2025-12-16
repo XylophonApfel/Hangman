@@ -90,33 +90,30 @@ def hangman_zeichen(zaehler):
             print(chr(9744),chr(9744),chr(9744),chr(9744),chr(9744),chr(9744),chr(9744))
 
 
-def wort_darstellen(wort, Buchstabe, Speicher):
+def wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler):
     os.system("cls")
+    
+    if Buchstabe != wort:
+        if Buchstabe.lower() not in wort and Buchstabe.upper() not in wort:
+            zaehler += 1
+            hangman_zeichen(zaehler)
 
-    wort_klein = ""
-    wort_liste = []
-    Erraten = []
+    if not Erraten:
+        Erraten = ["_"] * len(wort)
 
-    for i in wort:
-        Erraten.append("_")
-        wort_liste.append(i.lower())
-        wort_klein += i.lower()
+    if Buchstabe.lower() == wort.lower():
+        Richtig = "Richtig"
+        return Erraten, Richtig, zaehler
 
-    if Buchstabe == wort:
-        print("richtig")
     else:
-        for i in wort:
-            if Buchstabe.lower() == i or Buchstabe.upper() == i:
-                platz = wort.index(i)
-                Erraten[platz] = Buchstabe.lower()
+        for idx, letter in enumerate(wort):
+            if Buchstabe.lower() == letter.lower():
+                Erraten[idx] = letter.lower()
 
-            if "_" not in Erraten:
-                print("Richtig")
-                        
+        if "_" not in Erraten:
+            Richtig = "Richtig"
+            return Erraten, Richtig, zaehler
 
-    for i in wort:
-        platz = wort.index(i)
-        print(Erraten[platz], end='')
+    print("".join(Erraten))
 
-    return Erraten
-
+    return Erraten, Richtig, zaehler

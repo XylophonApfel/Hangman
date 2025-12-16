@@ -16,12 +16,20 @@ def main():
     print("Errate folgendes Wort:  ")
     laenge = len(wort)
     print("_" * laenge + "\n")
+    Erraten = []
+    Richtig = ""
+    zaehler = 0
 
-    while True:
+    while Richtig != "Richtig":
         for Name in Liste_Namen:
             print(f"\n{Name} ist Dran!\n")
             Buchstabe = buchstaben_raten()
-            speicher = wort_darstellen(wort, Buchstabe, speicher)
+            Erraten, Richtig, zaehler = wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler)
+            if Richtig == "Richtig":
+                print(f"Herzlichen Glückwunsch {Name}, du hast das Wort '{wort}' erraten!")
+                break
+    
+    print("Fertig")
 
 
 
