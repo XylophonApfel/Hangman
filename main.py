@@ -7,30 +7,26 @@ import os
 def main():
     liste_woerte = open_file()
     wort = wort_erzeugen(liste_woerte)
+    wort = wort.strip()
     anzahl_Spieler = menge_Spieler()
     Liste_Namen = eingabe_Spieler(anzahl_Spieler)
-
     os.system("cls")
-    print(wort)
-    wort = wort.strip()
-    print("Errate folgendes Wort:  ")
-    laenge = len(wort)
-    print("_" * laenge + "\n")
+    laenge_wort(wort)
+
     Erraten = []
     Richtig = ""
     zaehler = 0
 
-    while Richtig != "Richtig":
+    while zaehler < 6 and Richtig != "Richtig":
         for Name in Liste_Namen:
             print(f"\n{Name} ist Dran!\n")
             Buchstabe = buchstaben_raten()
             Erraten, Richtig, zaehler = wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler)
-            if Richtig == "Richtig":
-                print(f"Herzlichen Glückwunsch {Name}, du hast das Wort '{wort}' erraten!")
-                break
-    
-    print("Fertig")
+            spiel_gewonnen(Richtig, Name, wort)
+            spiel_verloren(zaehler, wort)
 
+            if Richtig == "Richtig" or zaehler == 6:
+                break
 
 
 if __name__ == "__main__":

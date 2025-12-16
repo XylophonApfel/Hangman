@@ -114,6 +114,15 @@ def wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler):
             Richtig = "Richtig"
             return Erraten, Richtig, zaehler
 
+    print("------------------------")
     print("".join(Erraten))
+    print("------------------------")
 
     return Erraten, Richtig, zaehler
+
+def laenge_wort(wort):
+    print("Errate folgendes Wort:  ")
+    laenge = len(wort)
+    print("------------------------")
+    print("          " + "_" * laenge)
+    print("------------------------")
