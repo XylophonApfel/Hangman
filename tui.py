@@ -109,7 +109,6 @@ def wort_darstellen(wort, Buchstabe, Speicher):
             if Buchstabe.lower() == i or Buchstabe.upper() == i:
                 platz = wort.index(i)
                 Erraten[platz] = Buchstabe.lower()
-                wort_liste[platz] = "-"
 
             if "_" not in Erraten:
                 print("Richtig")
