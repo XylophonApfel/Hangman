@@ -90,20 +90,20 @@ def hangman_zeichen(zaehler):
             print(chr(9744),chr(9744),chr(9744),chr(9744),chr(9744),chr(9744),chr(9744))
 
 
-def wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler):
+def wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler, buchstabe_fehler):
     os.system("cls")
     
     if Buchstabe != wort:
         if Buchstabe.lower() not in wort and Buchstabe.upper() not in wort:
             zaehler += 1
-            hangman_zeichen(zaehler)
+            buchstabe_fehler.append(Buchstabe)
 
     if not Erraten:
         Erraten = ["_"] * len(wort)
 
     if Buchstabe.lower() == wort.lower():
         Richtig = "Richtig"
-        return Erraten, Richtig, zaehler
+        return Erraten, Richtig, zaehler, buchstabe_fehler
 
     else:
         for idx, letter in enumerate(wort):
@@ -112,13 +112,21 @@ def wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler):
 
         if "_" not in Erraten:
             Richtig = "Richtig"
-            return Erraten, Richtig, zaehler
+            return Erraten, Richtig, zaehler, buchstabe_fehler
+    
+    hangman_zeichen(zaehler)
 
+    print("\nVerwendete Buchstaben: ")
+    print("------------------------")
+    print(" ".join(buchstabe_fehler))
+    print("------------------------\n")
+
+    print("Erratene Buchstaben: ")
     print("------------------------")
     print("".join(Erraten))
     print("------------------------")
 
-    return Erraten, Richtig, zaehler
+    return Erraten, Richtig, zaehler, buchstabe_fehler
 
 def laenge_wort(wort):
     print("Errate folgendes Wort:  ")

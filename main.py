@@ -12,8 +12,9 @@ def main():
     Liste_Namen = eingabe_Spieler(anzahl_Spieler)
     os.system("cls")
     laenge_wort(wort)
-
+    #print(wort)
     Erraten = []
+    buchstabe_fehler = []
     Richtig = ""
     zaehler = 0
 
@@ -21,7 +22,7 @@ def main():
         for Name in Liste_Namen:
             print(f"\n{Name} ist Dran!\n")
             Buchstabe = buchstaben_raten()
-            Erraten, Richtig, zaehler = wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler)
+            Erraten, Richtig, zaehler, buchstabe_fehler = wort_darstellen(wort, Buchstabe, Erraten, Richtig, zaehler, buchstabe_fehler)
             spiel_gewonnen(Richtig, Name, wort)
             spiel_verloren(zaehler, wort)
 
